@@ -18,8 +18,8 @@ body
 {
   font-family: 'Arial', sans-serif;
   color: black;
-  background-color: #DCDCDC;
-  background-image: url("../images/window_pattern.png");
+  background-color: #ffffff;
+  background-image: none;
 }
 
 .cse .gsc-control-cse,
@@ -336,7 +336,7 @@ nav
   top: 0;
   bottom: 0;
   width: 200px;
-  background-color: #990026;
+  background-color: #b2b2b2;
   text-align: center;
 }
 
@@ -352,7 +352,7 @@ nav ul li a
   text-decoration: none;
   display: block;
   text-align: center;
-  color: #ffffff;
+  color: #000000;
   padding: 10px 0;
 }
 
@@ -390,7 +390,7 @@ nav ul li a
 .content 
 {
   height: 2000px;
-  background-color: #DCDCDC;
+  background-color: #b2b2b2;
   margin-left: 200px; 
 }
 
@@ -400,7 +400,7 @@ nav ul li a
   margin: 10px auto;
   width: 125px;
   height: 125px;
-  border-radius: 50%;
+  border-radius: 0%;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
