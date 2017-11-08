@@ -2,7 +2,8 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 98%;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 #content_container {
@@ -45,7 +46,7 @@ html, body {
 #documents {
     overflow-y: scroll;
     width: auto;
-    height: 40%;
+    height: 30%;
     background: #ffffff;
     border-top: 2px solid #000000;
     border-left: 2px solid #000000;
@@ -60,6 +61,7 @@ html, body {
 
 #draggable_line:hover {
     background: #628fc1;
+    cursor: s-resize;
 }
 
 #current_chart {
@@ -71,4 +73,17 @@ html, body {
     border-right: 2px solid #000000;
     border-bottom: 2px solid #000000;
     margin-bottom: 18px;
+}
+
+#scroll_menu {
+    margin-bottom: 15px;
+}
+
+#scroll_menu a {
+    display: inline-block;
+    border: 3px ridge darkorange;
+    background: #ffffff;
+    width: auto;
+    padding: 3px;
+    margin: 10px;
 }
