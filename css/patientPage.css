@@ -3,7 +3,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 #content_container {
@@ -86,4 +86,50 @@ html, body {
     width: auto;
     padding: 3px;
     margin: 10px;
+}
+
+#textEditor{
+    margin: 0 auto;
+    width: auto;
+    height: 300px;
+}
+
+#theRibbon{
+    border-bottom: none;
+    padding: 10px;
+    background-color: #d3d3d3;
+    color: black;
+    border-radius: 0px 0px 0px 0px;
+
+}
+
+#theRibbon > button{
+    color: black;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#theRibbon > button:hover{
+    background-color: rgb(71, 76, 75);
+    transition: all 0.3s linear 0s;
+}
+
+#richTextArea{
+    border: 2px solid rgb(102, 102, 102);
+    height: 100%;
+    width: 100%;
+}
+
+input[type="color"]{
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+}
+
+iframe#theWYSIWYG{
+    height: 100%;
+    width: 100%;
 }
