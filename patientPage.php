@@ -121,8 +121,6 @@ BP:         Temp:       Height:     Weight:     BMI:
           </div>  
             <p class="info">
 
-
-
 Documents
 
 Document 1
@@ -172,17 +170,27 @@ Current Chart
 
 // https://stackoverflow.com/questions/38289204/jquery-ui-draggable-doesnt-resize-other-divs/38553541#38553541
 
+        var beingdragged = false;
+
         $line.draggable({
             axis: "y",
             start: function(event, ui) {
                 shiftInitial = ui.position.top;
                 top1H = $docs.height();
                 bottom1H = $charts.height();
+                beingdragged = true;
             },
             drag: function(event,ui) {
                 var shift = ui.position.top;
-                $docs.css('height', (top1H + shift - shiftInitial));
-                $charts.css('height', (bottom1H - shift + shiftInitial));
+
+                if (beingdragged/* && $line.offset.top - shift - top1H > 0 */) {
+                    $docs.css('height', (top1H + shift - shiftInitial));
+                    $charts.css('height', (bottom1H - shift + shiftInitial));
+                }
+
+                $line.onmouseup(function() {
+                    beingdragged = false;
+                });
 
                 if ($charts.height() <= 0) {
                     $charts.height(0);
