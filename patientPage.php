@@ -14,13 +14,18 @@
 
     <title>Patient Page</title>
     <link rel="stylesheet" type="text/css" href="css/patientPage.css" />
+    <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab|Raleway" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="jquery/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
     <script type="text/javascript">
         window.addEventListener("load", function(){
-            var editor = the theWYSIWYG.document;
+            var editor = theWYSIWYG.document;
             editor.designMode = "on";
 
         },false);
@@ -40,6 +45,7 @@
         <p class="info">
 
             <img src="images/user.jpg" height="150" width="150">
+
 Jane Doe
 
 Age: 14
@@ -93,7 +99,7 @@ BP:         Temp:       Height:     Weight:     BMI:
                 <option value="calibri">Calibri</option>
             </select>
             <script type="text/javascript">
-                var fonts = document.querySelectAll("select#fontChanger > option");
+                var fonts = document.querySelectorAll("select#fontChanger > option");
                 for (var i = 0; i < fonts.length; i++) {
                     fonts[i].style.fontFamily = fonts[i].value;
                 }
@@ -158,23 +164,33 @@ Current Chart
     $docs = $("#documents");
     $charts = $("#current_chart");
 
-    var finished = false;
 
-    $line.mouseup(function() {
-        finished = true;
+    var top1H, bottom1H;
+    var shiftInitial;
+
+    $(function() {
+
+// https://stackoverflow.com/questions/38289204/jquery-ui-draggable-doesnt-resize-other-divs/38553541#38553541
+
+        $line.draggable({
+            axis: "y",
+            start: function(event, ui) {
+                shiftInitial = ui.position.top;
+                top1H = $docs.height();
+                bottom1H = $charts.height();
+            },
+            drag: function(event,ui) {
+                var shift = ui.position.top;
+                $docs.css('height', (top1H + shift - shiftInitial));
+                $charts.css('height', (bottom1H - shift + shiftInitial));
+
+                if ($charts.height() <= 0) {
+                    $charts.height(0);
+                    $docs.height(450);
+                }
+            }
+         });
     });
-
-    $line.mousedown(function resize() {
-        alert("hi");
-        $docs.height(currentMousePos.y - $docs.offsetY);
-        $charts.height($charts.offsetY - currentMousePos.y);
-
-        if (finished === false) {
-            setTimeout(resize, 100)
-        }
-
-    });
-
 
 </script>
 

@@ -15,6 +15,12 @@ html, body {
     margin-left: 10px;
     white-space: pre-wrap;
     margin-top: -5px;
+    font-family: 'Raleway', sans-serif;
+}
+
+h2 {
+    font-family: 'Arbutus Slab', serif;
+    margin: auto;
 }
 
 #side_bar {
@@ -34,7 +40,7 @@ html, body {
 }
 
 #top_bar {
-    height: 15%;
+    height: 20%;
     background: #ffffff;
     border: 2px solid #000000;
     white-space: pre-line;
@@ -46,7 +52,7 @@ html, body {
 #documents {
     overflow-y: scroll;
     width: auto;
-    height: 30%;
+    height: 200px;
     background: #ffffff;
     border-top: 2px solid #000000;
     border-left: 2px solid #000000;
@@ -55,7 +61,7 @@ html, body {
 
 #draggable_line {
     width: 100%;
-    height: 4px;
+    height: 6px;
     background: #000000;
 }
 
@@ -65,9 +71,9 @@ html, body {
 }
 
 #current_chart {
-    overflow-y: scroll;
+   /* overflow-y: scroll; */
     width: auto;
-    height: 40%;
+    height: 250px;
     background: #ffffff;
     border-left: 2px solid #000000;
     border-right: 2px solid #000000;
