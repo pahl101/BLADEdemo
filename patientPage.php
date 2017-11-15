@@ -13,6 +13,7 @@
 <head>
 
     <title>Patient Page</title>
+    <link rel=icon href=images/favicon.png>
     <link rel="stylesheet" type="text/css" href="css/patientPage.css" />
     <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab|Raleway" rel="stylesheet">
 
@@ -24,9 +25,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
     <script type="text/javascript">
-        window.addEventListener("load", function(){
+       window.addEventListener("load", function(){
             var editor = theWYSIWYG.document;
             editor.designMode = "on";
+
+            boldButton.addEventListener("click", function(){
+                editor.execCommand("Bold", false, null);
+            },false);
+
+            italicButton.addEventListener("click", function(){
+                editor.execCommand("Italic", false, null);
+            },false);
+
+            supButton.addEventListener("click", function(){
+                editor.execCommand("Superscript", false, null);
+            },false);
+
+            subButton.addEventListener("click", function(){
+                editor.execCommand("Subscript", false, null);
+            },false);
+
+            strikeButton.addEventListener("click", function(){
+                editor.execCommand("Strikethrough", false, null);
+            },false);
+
+            orderedListButton.addEventListener("click", function(){
+                editor.execCommand("InsertOrderedList", false, "newOL" + Math.round(Math.random() *1000));
+            },false);
+
+            unorderedListButton.addEventListener("click", function(){
+                editor.execCommand("InsertUnorderedList", false, "newOL" + Math.round(Math.random() * 1000));
+            },false);
+
+            fontColorButton.addEventListener("change", function(event){
+                editor.execCommand("ForeColor", false, event.target.value);
+            },false);
+
+            highlightButton.addEventListener("change", function(event){
+                editor.execCommand("BackColor", false, event.target.value);
+            },false);
+
+
+            fontChanger.addEventListener("change", function(event){
+                editor.execCommand("FontName", false, event.target.value);
+            }, false);
+
+
+            fontSizeChanger.addEventListener("change", function(event){
+                editor.execCommand("FontSize", false, event.target.value);
+            }, false);
+
+            linkButton.addEventListener("click", function(){
+                var url = prompt("Enter a URL", "http://")
+                editor.execCommand("CreateLink", false, url);
+            },false);
+
+            unlinkButton.addEventListener("click", function(){
+                editor,execCommand("UnLink",false,null);
+            }, false);
+
+            undoButton.addEventListener("click", function(){
+                editor.execCommand("undo", false, null);
+            },false);
+
+            redoButton.addEventListener("click", function(){
+                editor.execCommand("redo", false, null);
+            }, false);
+
 
         },false);
     </script>
@@ -79,6 +144,14 @@ BP:         Temp:       Height:     Weight:     BMI:
 
         <!-- Documents - Dynamic Height -->
         <div id="documents">
+
+        	Documents <br><br>
+
+				Document 1 <br>
+				Document 2 <br>
+				Document 3 <br>
+				New Document <br>
+
           <div id="theRibbon">
             <button id="boldButton" title="Bold"><b>B</b></button>
             <button id="italicButton" title="Italic"><em>I</em></button>
@@ -89,7 +162,7 @@ BP:         Temp:       Height:     Weight:     BMI:
             <button id="unorderedListButton" title="Bulleted list">&bull;</button>
             <input type="color" id="fontColorButton" title="Change Font Color">
             <input type="color" id="highlightButton" title="Highlight Text">
-            <select id= "fontChanger">
+            <select id= "fontChanger"> <!-- Not working -->
                 <option value="Times New Roman">Times New Roman</option>
                 <option value="Consolas">Consolas</option>
                 <option value="Tahoma">Tahoma</option>
@@ -105,11 +178,15 @@ BP:         Temp:       Height:     Weight:     BMI:
                 }
             </script>
             <select id="fontSizeChanger">
-                <script type="text/javascript">
-                    for (var i=1; i<10; ++i){
-                        document.write("<option value='"+i+"'>"+i+"</option>");
-                    }
-                </script>
+            	<option value="12">12</option>
+            	<option value="14">14</option>
+            	<option value="18">18</option>
+            	<option value="24">24</option>
+            	<option value="30">30</option>
+            	<option value="36">36</option>
+            	<option value="48">48</option>
+            	<option value="60">60</option>
+            	<option value="72">72</option>
             </select>
             <button id="linkButton" title="Create Link">Link</button>
             <button id="unlinkButton" title="Remove Link">UnLink</button>
@@ -121,11 +198,7 @@ BP:         Temp:       Height:     Weight:     BMI:
           </div>  
             <p class="info">
 
-Documents
 
-Document 1
-Document 2
-Document 3
             </p>
         </div>
 
